@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple application showing country data and current weather information.">
+    <title>Explore Countries & Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="app-container">
+        <header>
+            <h1><i class="fa-solid fa-earth-americas"></i> Global Insights</h1>
+            <p>Discover current data and weather for any country</p>
+        </header>
+
+        <main>
+            <div class="search-section glass-panel">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <select id="countrySelect" class="country-input" aria-label="Select a country">
+                        <option value="">Loading countries...</option>
+                    </select>
+                </div>
+                <div class="input-wrapper mt-3">
+                    <i class="fa-solid fa-city search-icon"></i>
+                    <input type="text" id="cityInput" class="country-input" placeholder="Enter city name (optional)..." aria-label="Enter city name">
+                </div>
+                <button id="searchBtn" class="primary-btn mt-3">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+            </div>
+
+            <div id="loading" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Fetching data...</p>
+            </div>
+
+            <div id="error" class="error-message hidden">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p id="errorText">Something went wrong.</p>
+            </div>
+
+            <div id="resultsContent" class="results-content hidden">
+                <div class="geo-data glass-panel fade-in">
+                    <div class="panel-header">
+                        <h2><i class="fa-solid fa-map-location-dot"></i> Country Data</h2>
+                    </div>
+                    <div class="flag-container">
+                        <img id="countryFlag" src="" alt="Country Flag">
+                    </div>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <span class="label">Name</span>
+                            <span class="value" id="countryName">-</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="label">Capital</span>
+                            <span class="value" id="countryCapital">-</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="label">Region</span>
+                            <span class="value" id="countryRegion">-</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="label">Population</span>
+                            <span class="value" id="countryPopulation">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-data glass-panel fade-in delay-1">
+                    <div class="panel-header">
+                        <h2><i class="fa-solid fa-cloud-sun"></i> Current Weather</h2>
+                    </div>
+                    <div class="weather-main">
+                        <div class="weather-icon-temp">
+                            <i id="weatherIcon" class="fa-solid fa-cloud weather-icon-large"></i>
+                            <div class="temperature">
+                                <span id="weatherTemp">-</span>°C
+                            </div>
+                        </div>
+                        <div class="weather-desc" id="weatherDesc">Condition</div>
+                    </div>
+                    <div class="data-grid weather-extras">
+                        <div class="data-item">
+                            <span class="label">Wind Speed</span>
+                            <span class="value"><span id="windSpeed">-</span> km/h</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="label">Time (Local)</span>
+                            <span class="value" id="localTime">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
